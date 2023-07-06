@@ -63,33 +63,37 @@ function cuantasJugadas(eleccion){
     return cantidadJugadas;
 }
 
-let opcionesDeJuego = [1, 2, 3];
-let partidas = cuantasJugadas(opcionesDeJuego)
-while(partidas == 1 && !(resultado == "Gana la computadora" || resultado == "Gana el usuario")
-    || partidas == 2 && jugadas != 2
-    || partidas == 3 && !(victoriasComputadora - victoriasUsuario == 2 || victoriasUsuario - victoriasComputadora == 2)){
-        let computadora = obtenerJugadaComputadora(opcionesJugadas);
-        let usuario = obtenerJugadaUsuario(opcionesJugadas);
-        resultado = determinarGanador(computadora, usuario);
-        if(resultado == "Gana la computadora"){
-            victoriasComputadora += 1;
-        } else if(resultado == "Gana el usuario"){
-            victoriasUsuario += 1;
-        } else if(resultado == "Empate"){
-            empates++;
-        }
-        jugadas++;
-        console.log(`El usuario eligio: ${usuario}\nLa computadora eligio: ${computadora}\nvictorias computadora: ${victoriasComputadora}\nvictorias usuario: ${victoriasUsuario}\nGanador de la ronda: ${resultado}`);
-        // CONDICION PARA CONTAR VICTORIAS 
-        if(victoriasComputadora - victoriasUsuario == 2){
-            console.log("EL GANADOR ES LA COMPUTADORA");
-        } else if(victoriasUsuario - victoriasComputadora == 2){
-            console.log("EL GANADOR ES EL USUARIO");
-        } else if(partidas == 2 && victoriasComputadora == 1 && empates == 1){
-            console.log("EL GANADOR ES LA COMPUTADORA");
-        } else if(partidas == 2 && victoriasUsuario == 1 && empates == 1){
-            console.log("EL GANADOR ES EL USUARIO");
-        } else if(partidas == 2 && (empates == 2 || victoriasComputadora == 1 & victoriasUsuario == 1)){
-            console.log("ES UN EMPATE");
-        }
-} 
+function main(){
+    let opcionesDeJuego = [1, 2, 3];
+    let partidas = cuantasJugadas(opcionesDeJuego)
+    while(partidas == 1 && !(resultado == "Gana la computadora" || resultado == "Gana el usuario")
+        || partidas == 2 && jugadas != 2
+        || partidas == 3 && !(victoriasComputadora - victoriasUsuario == 2 || victoriasUsuario - victoriasComputadora == 2)){
+            let computadora = obtenerJugadaComputadora(opcionesJugadas);
+            let usuario = obtenerJugadaUsuario(opcionesJugadas);
+            resultado = determinarGanador(computadora, usuario);
+            if(resultado == "Gana la computadora"){
+                victoriasComputadora += 1;
+            } else if(resultado == "Gana el usuario"){
+                victoriasUsuario += 1;
+            } else if(resultado == "Empate"){
+                empates++;
+            }
+            jugadas++;
+            console.log(`El usuario eligio: ${usuario}\nLa computadora eligio: ${computadora}\nvictorias computadora: ${victoriasComputadora}\nvictorias usuario: ${victoriasUsuario}\nGanador de la ronda: ${resultado}`);
+            // CONDICION PARA CONTAR VICTORIAS 
+            if(victoriasComputadora - victoriasUsuario == 2){
+                console.log("EL GANADOR ES LA COMPUTADORA");
+            } else if(victoriasUsuario - victoriasComputadora == 2){
+                console.log("EL GANADOR ES EL USUARIO");
+            } else if(partidas == 2 && victoriasComputadora == 1 && empates == 1){
+                console.log("EL GANADOR ES LA COMPUTADORA");
+            } else if(partidas == 2 && victoriasUsuario == 1 && empates == 1){
+                console.log("EL GANADOR ES EL USUARIO");
+            } else if(partidas == 2 && (empates == 2 || victoriasComputadora == 1 & victoriasUsuario == 1)){
+                console.log("ES UN EMPATE");
+            }
+    } 
+}
+
+main();
